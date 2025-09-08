@@ -7,6 +7,8 @@ import curl
 from pages.base_page import BasePage
 from data import EMAIL, PASSWORD
 from curl import PROFILE_PAGE_URL
+from pages.registration_page import RegistrationPage
+
 
 class LoginPage(BasePage):
 
@@ -62,4 +64,8 @@ class LoginPage(BasePage):
         expected_url = PROFILE_PAGE_URL
 
         return current_url == expected_url
+
+    def go_to_registration_page(self):
+        self.click_on_element(self.CREATE_ACCOUNT_BUTTON)
+        return RegistrationPage(self.driver)
 

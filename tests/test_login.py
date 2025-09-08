@@ -18,7 +18,6 @@ class TestLogin:
         login_page: LoginPage = home_page.header.go_to_login_page()
         login_page.set_email()
         login_page.set_password()
-        time.sleep(5)
         login_page.click_on_sign_in_button()
 
         assert login_page.is_logged_in()  # добавили вызов метода
