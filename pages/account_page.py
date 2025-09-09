@@ -1,6 +1,8 @@
 import allure
 from selenium.webdriver.common.by import By
 
+from pages.account.account_address_page import AccountAddressPage
+from pages.account_information_page import AccountInformationPage
 from pages.base_page import BasePage
 from pages.login_page import LoginPage
 
@@ -10,7 +12,7 @@ class AccountPage(BasePage):
     DEALY_LOGO = By.XPATH, "//img[@alt='Dealy']"
 
     # Имя пользователя
-    PROFILE_NAME = By.XPATH, "//span[contains(text(), 'Ivan Ivanov')]"
+    PROFILE_NAME = By.XPATH, "//span[@class='u-font-weight-bold']"
 
     # Ссылка в левом меню на страницу профиля
     PROFILE_LINK = By.CSS_SELECTOR, "a.c-account-sidebar__link.c-account-sidebar__heading"
@@ -19,7 +21,7 @@ class AccountPage(BasePage):
     ORDER_HISTORY_LINK = By.ID, "history-link"
 
     # Ссылка в левом меню на страницу личную информация
-    INFORMATION_LINK = By.ID, "identity - link"
+    INFORMATION_LINK = By.ID, "identity-link"
 
     # Ссылка в левом меню на страницу добавления адреса
     ADD_FIRST_ADDRESS_LINK = By.ID, "address-link"
@@ -67,3 +69,11 @@ class AccountPage(BasePage):
     @allure.step("Проверка успешно выхода из аккаунт")
     def is_logout_in(self):
         return bool(self.wait_for_element(LoginPage.SIGN_IN_BUTTON))
+
+    def go_to_account_information_page(self):
+        self.click_on_element(self.INFORMATION_LINK)
+        return AccountInformationPage(self.driver)
+
+    def go_to_account_address_page(self):
+        self.click_on_element(self.ADD_FIRST_ADDRESS_LINK)
+        return AccountAddressPage(self.driver)

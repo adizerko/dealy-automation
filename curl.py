@@ -3,3 +3,4 @@ MAIN_PAGE_URL = f'{BASE_URL}/'
 LOGIN_URL = f'{BASE_URL}/authentification'
 PROFILE_PAGE_URL = f"{BASE_URL}/my-account"
 REGISTRATION_URL = f"{BASE_URL}/authentification?create_account=1"
+ACCOUNT_INFORMATION_PAGE = f"{BASE_URL}/identity"

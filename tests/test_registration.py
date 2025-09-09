@@ -1,3 +1,5 @@
+import time
+
 import allure
 from selenium.webdriver.chrome.webdriver import WebDriver
 
